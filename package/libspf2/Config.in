@@ -1,0 +1,10 @@
+config BR2_PACKAGE_LIBSPF2
+	bool "libspf2"
+	depends on !BR2_STATIC_LIBS
+	depends on BR2_USE_MMU # fork()
+	help
+		libspf2
+
+comment "libspf2 needs a toolchain w/ dynamic library"
+	depends on BR2_USE_MMU
+	depends on BR2_STATIC_LIBS

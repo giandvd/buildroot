@@ -1,0 +1,4 @@
+config BR2_PACKAGE_PERL_CLASS_TINY
+	bool "perl-class-tiny"
+	help
+	  Class::Tiny - Minimalist class construction

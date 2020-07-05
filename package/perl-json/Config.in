@@ -1,0 +1,4 @@
+config BR2_PACKAGE_PERL_JSON
+	bool "perl-json"
+	help
+	  JSON - JSON (JavaScript Object Notation) encoder/decoder

@@ -1,0 +1,22 @@
+--- libspf2-1.2.10.orig/configure.ac	2020-06-28 11:26:15.006509231 +0200
++++ libspf2-1.2.10/configure.ac	2020-06-28 11:26:51.082608258 +0200
+@@ -280,9 +280,5 @@
+                  Doxyfile
+                  src/Makefile
+                  src/include/Makefile
+-                 src/libspf2/Makefile
+-                 src/spfquery/Makefile
+-                 src/spftest/Makefile
+-                 src/spfd/Makefile
+-                 src/spf_example/Makefile])
++                 src/libspf2/Makefile])
+ AC_OUTPUT
+--- libspf2-1.2.10.orig/src/Makefile.am	2020-06-28 11:26:15.006509231 +0200
++++ libspf2-1.2.10/src/Makefile.am	2020-06-28 11:30:51.067267035 +0200
+@@ -4,5 +4,5 @@
+ # Attempt to disable parallel processing.
+ .NOTPARALLEL:
+ .NO_PARALLEL:
+-SUBDIRS =	include libspf2 spfquery spftest spfd spf_example
++SUBDIRS =	include libspf2
+ TARGETS =

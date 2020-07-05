@@ -85,4 +85,12 @@ define HAPROXY_INSTALL_TARGET_CMDS
 		$(HAPROXY_MAKE_OPTS) -C $(@D) DESTDIR=$(TARGET_DIR) install
 endef
 
+define HAPROXY_USERS
+endef
+
+define HAPROXY_INSTALL_INIT_SYSTEMD
+        $(INSTALL) -D -m 644 package/haproxy/haproxy.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/haproxy.service
+endef
+
 $(eval $(generic-package))

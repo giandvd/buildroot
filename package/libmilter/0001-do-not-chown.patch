@@ -1,0 +1,24 @@
+--- libmilter-1.0.2.orig/libmilter/Makefile.m4	2020-06-28 07:38:56.596146179 +0200
++++ libmilter-1.0.2/libmilter/Makefile.m4	2020-06-28 08:31:54.065333548 +0200
+@@ -33,8 +33,8 @@
+ MFDEF=	${SRCDIR}/inc`'lude/libmilter/mfdef.h
+ install-mfapi: ${MFAPI}
+ 	if [ ! -d ${DESTDIR}${INCLUDEDIR}/libmilter ]; then mkdir -p ${DESTDIR}${INCLUDEDIR}/libmilter; else :; fi
+-	${INSTALL} -c -o ${INCOWN} -g ${INCGRP} -m ${INCMODE} ${MFAPI} ${DESTDIR}${INCLUDEDIR}/libmilter/mfapi.h
+-	${INSTALL} -c -o ${INCOWN} -g ${INCGRP} -m ${INCMODE} ${MFDEF} ${DESTDIR}${INCLUDEDIR}/libmilter/mfdef.h
++	${INSTALL} -c -m ${INCMODE} ${MFAPI} ${DESTDIR}${INCLUDEDIR}/libmilter/mfapi.h
++	${INSTALL} -c -m ${INCMODE} ${MFDEF} ${DESTDIR}${INCLUDEDIR}/libmilter/mfdef.h
+ divert(0)
+ 
+ bldFINISH
+--- libmilter-1.0.2.orig/devtools/M4/UNIX/library.m4	2020-06-28 07:38:56.580146025 +0200
++++ libmilter-1.0.2/devtools/M4/UNIX/library.m4	2020-06-28 08:43:53.954625826 +0200
+@@ -28,7 +28,7 @@
+ 
+ install-`'bldCURRENT_PRODUCT: bldCURRENT_PRODUCT.a
+ ifdef(`bldINSTALLABLE', `	ifdef(`confMKDIR', `if [ ! -d ${DESTDIR}${bldINSTALL_DIR`'LIBDIR} ]; then confMKDIR -p ${DESTDIR}${bldINSTALL_DIR`'LIBDIR}; else :; fi ')
+-	${INSTALL} -c -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} bldCURRENT_PRODUCT.a ${DESTDIR}${LIBDIR}')
++	${INSTALL} -c -m ${LIBMODE} bldCURRENT_PRODUCT.a ${DESTDIR}${LIBDIR}')
+ 
+ bldCURRENT_PRODUCT-clean:
+ 	rm -f ${OBJS} bldCURRENT_PRODUCT.a ${MANPAGES}

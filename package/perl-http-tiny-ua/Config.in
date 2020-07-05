@@ -1,0 +1,12 @@
+config BR2_PACKAGE_PERL_HTTP_TINY_UA
+	bool "perl-http-tiny-ua"
+	depends on !BR2_STATIC_LIBS
+	select BR2_PACKAGE_PERL_HTTP_TINY
+	select BR2_PACKAGE_PERL_CLASS_TINY
+	help
+	  HTTP::Tiny::UA - Higher-level UA features for HTTP::Tiny
+
+	  https://metacpan.org/release/HTTP-Tiny-UA
+
+comment "perl-http-tiny-ua needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

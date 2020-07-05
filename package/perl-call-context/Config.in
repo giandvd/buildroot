@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PERL_CALL_CONTEXT
+	bool "perl-call-context"
+	depends on !BR2_STATIC_LIBS
+	help
+	  Call::Context - Sanity-check calling context
+
+	  https://metacpan.org/release/Call-Context
+
+comment "perl-call-context needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

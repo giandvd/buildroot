@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PERL_BYTES_RANDOM_SECURE_TINY
+	bool "perl-bytes-random-secure-tiny"
+	depends on !BR2_STATIC_LIBS
+	help
+	  Bytes::Random::Secure::Tiny - A tiny Perl extension to generate cryptographically-secure random bytes
+
+	  https://metacpan.org/release/Bytes::Random::Secure::Tiny
+
+comment "perl-bytes-random-secure-tiny needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

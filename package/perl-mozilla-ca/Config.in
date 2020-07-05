@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PERL_MOZILLA_CA
+	bool "perl-mozilla-ca"
+	depends on !BR2_STATIC_LIBS
+	help
+	  Mozilla::CA - Mozilla's CA cert bundle in PEM format
+
+	  https://metacpan.org/release/Mozilla-CA
+
+comment "perl-mozilla-ca needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

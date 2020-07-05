@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PERL_CRYPT_SMIME
+	bool "perl-crypt-smime"
+	depends on !BR2_STATIC_LIBS
+	help
+	  Perl S/MIME encryption module.
+
+	  https://metacpan.org/release/Crypt-SMIME
+
+comment "perl-crypt-smime needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

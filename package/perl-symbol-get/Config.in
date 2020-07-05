@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PERL_SYMBOL_GET
+	bool "perl-symbol-get"
+	depends on !BR2_STATIC_LIBS
+	select BR2_PACKAGE_PERL_CALL_CONTEXT
+	help
+	  Symbol::Get - Read Perl's symbol table programmatically
+
+	  https://metacpan.org/release/Symbol-Get
+
+comment "perl-symbol-get needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

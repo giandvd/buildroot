@@ -1,0 +1,13 @@
+PERL_CRYPT_SMIME_VERSION = 0.25
+PERL_CRYPT_SMIME_SOURCE = Crypt-SMIME-$(PERL_CRYPT_SMIME_VERSION).tar.gz
+PERL_CRYPT_SMIME_SITE = $(BR2_CPAN_MIRROR)/authors/id/M/MI/MIKAGE
+PERL_CRYPT_SMIME_LICENSE = BSD-4-Clause-like
+PERL_CRYPT_SMIME_LICENSE_FILES = COPYRIGHT
+PERL_CRYPT_SMIME_DISTNAME = Crypt-SMIME
+PERL_CRYPT_SMIME_DEPENDENCIES = \
+  host-perl-extutils-cchecker \
+  host-perl-module-build \
+  host-perl-extutils-pkgconfig
+PERL_CRYPT_SMIME_CONF_ENV = PATH=$(BR_PATH):$(HOST_DIR)/bin
+
+$(eval $(perl-package))

@@ -1,0 +1,10 @@
+config BR2_PACKAGE_WEBSERVER
+	bool "webserver"
+	depends on !BR2_STATIC_LIBS
+	depends on BR2_USE_MMU # fork()
+	help
+		webserver
+
+comment "webserver needs a toolchain w/ dynamic library"
+	depends on BR2_USE_MMU
+	depends on BR2_STATIC_LIBS

@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PERL_MATH_PROVABLEPRIME
+	bool "perl-math-provableprime"
+	depends on !BR2_STATIC_LIBS
+	help
+	  Math::ProvablePrime - Generate a provable prime number, in pure Perl
+
+	  https://metacpan.org/release/Math-ProvablePrime
+
+comment "perl-math-provableprime needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

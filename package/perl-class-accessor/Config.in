@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PERL_CLASS_ACCESSOR
+	bool "perl-class-accessor"
+	depends on !BR2_STATIC_LIBS
+	help
+	  Class::Accessor - Automated accessor generation
+
+	  https://metacpan.org/release/Class-Accessor
+
+comment "perl-class-accessor needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

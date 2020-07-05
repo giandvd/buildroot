@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PERL_CRYPT_FORMAT
+	bool "perl-crypt-format"
+	depends on !BR2_STATIC_LIBS
+	help
+	  Crypt::Format - Conversion utilities for encryption applications
+
+	  https://metacpan.org/release/Crypt-Format
+
+comment "perl-crypt-format needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

@@ -1,0 +1,15 @@
+[Unit]
+Description=tinydns
+After=network.target nss-lookup.target
+
+[Service]
+ExecStart=/usr/bin/tinydns
+Environment=IP=0.0.0.0
+Restart=on-failure
+DynamicUser=yes
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+StateDirectory=tinydns
+WorkingDirectory=/var/lib/private/tinydns
+
+[Install]
+WantedBy=multi-user.target

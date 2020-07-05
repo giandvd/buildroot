@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PERL_X_TINY
+	bool "perl-x-tiny"
+	select BR2_PACKAGE_PERL_MODULE_RUNTIME
+	help
+	  X::Tiny - Base class for a bare-bones exception factory
+
+	  https://metacpan.org/release/X-Tiny

@@ -128,4 +128,14 @@ endef
 
 DOVECOT_POST_INSTALL_STAGING_HOOKS += DOVECOT_FIX_STAGING_DOVECOT_CONFIG
 
+define DOVECOT_USERS
+        dovecot -1 dovecot -1 * /dev/null -
+        dovenull -1 dovenull -1 * /dev/null -
+endef
+
+define DOVECOT_INSTALL_INIT_SYSTEMD
+        $(INSTALL) -D -m 644 package/dovecot/dovecot.service \
+                $(TARGET_DIR)/usr/lib/systemd/system/dovecot.service
+endef
+
 $(eval $(autotools-package))

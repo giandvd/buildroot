@@ -1,0 +1,17 @@
+config BR2_PACKAGE_PERL_CRYPT_PERL
+	bool "perl-crypt-perl"
+	depends on !BR2_STATIC_LIBS
+	select BR2_PACKAGE_PERL_BYTES_RANDOM_SECURE_TINY
+	select BR2_PACKAGE_PERL_CLASS_ACCESSOR
+	select BR2_PACKAGE_PERL_CONVERT_ASN1
+	select BR2_PACKAGE_PERL_CRYPT_FORMAT
+	select BR2_PACKAGE_PERL_MATH_PROVABLEPRIME
+	select BR2_PACKAGE_PERL_SYMBOL_GET
+	select BR2_PACKAGE_PERL_TRY_TINY
+	help
+	  Crypt::Perl - Cryptography in pure Perl
+
+	  https://metacpan.org/release/Crypt-Perl
+
+comment "perl-crypt-perl needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

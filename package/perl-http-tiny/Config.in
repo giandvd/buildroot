@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PERL_HTTP_TINY
+	bool "perl-http-tiny"
+	depends on !BR2_STATIC_LIBS
+	help
+	  HTTP::Tiny - A small, simple, correct HTTP/1.1 client
+
+	  https://metacpan.org/release/HTTP-Tiny
+
+comment "perl-http-tiny needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS

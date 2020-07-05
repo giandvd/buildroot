@@ -1,0 +1,11 @@
+LIBSPF2_VERSION = 1.2.10
+LIBSPF2_SITE = http://www.libspf2.org/spf
+LIBSPF2_INSTALL_STAGING = YES
+LIBSPF2_LICENSE = EPL-2.0, IPL-1.0
+LIBSPF2_LICENSE_FILES = COPYING
+LIBSPF2_LIBTOOL_PATCH = NO
+LIBSPF2_AUTORECONF = YES
+LIBSPF2_CONF_ENV = ac_cv_func_setpgrp_void=yes
+LIBSPF2_MAKE_ENV = ac_cv_func_setpgrp_void=yes
+
+$(eval $(autotools-package))

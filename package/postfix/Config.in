@@ -1,0 +1,12 @@
+config BR2_PACKAGE_POSTFIX
+	bool "postfix"
+	depends on !BR2_STATIC_LIBS
+	depends on BR2_USE_MMU # fork()
+	select BR2_PACKAGE_OPENSSL
+	select BR2_PACKAGE_ZLIB
+	help
+		Postfix
+
+comment "postfix needs a toolchain w/ dynamic library"
+	depends on BR2_USE_MMU
+	depends on BR2_STATIC_LIBS

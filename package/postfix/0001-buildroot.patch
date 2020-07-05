@@ -1,0 +1,75 @@
+diff -ur postfix-3.5.3.orig/makedefs postfix-3.5.3/makedefs
+--- postfix-3.5.3.orig/makedefs	2020-06-21 16:57:50.885946852 +0200
++++ postfix-3.5.3/makedefs	2020-06-21 16:57:59.718028433 +0200
+@@ -491,15 +491,17 @@
+ 		esac
+ 		;;
+     Linux.2*)	SYSTYPE=LINUX2
++                SYSROOT="$($CC -print-sysroot)"
+ 		case "$CCARGS" in
+ 		 *-DNO_DB*) ;;
+ 		 *-DHAS_DB*) ;;
+-		 *) if [ -f /usr/include/db.h ]
++		 *) 
++		    if [ -f ${SYSROOT}/usr/include/db.h ]
+ 		    then
+ 			: we are all set
+-		    elif [ -f /usr/include/db/db.h ]
++		    elif [ -f ${SYSROOT}/usr/include/db/db.h ]
+ 		    then
+-			CCARGS="$CCARGS -I/usr/include/db"
++			CCARGS="$CCARGS -I${SYSROOT}/usr/include/db"
+ 		    else
+ 			# No, we're not going to try db1 db2 db3 etc.
+ 			# On a properly installed system, Postfix builds
+@@ -513,7 +515,7 @@
+ 		esac
+ 		for name in nsl resolv $GDBM_LIBS
+ 		do
+-		    for lib in /usr/lib64 /lib64 /usr/lib /lib
++		    for lib in ${SYSROOT}/usr/lib64 ${SYSROOT}/lib64 ${SYSROOT}/usr/lib ${SYSROOT}/lib
+ 		    do
+ 			test -e $lib/lib$name.a -o -e $lib/lib$name.so && {
+ 			    SYSLIBS="$SYSLIBS -l$name"
+@@ -571,15 +573,17 @@
+ 		: ${PLUGIN_LD="${CC-gcc} -shared"}
+ 		;;
+  Linux.[345].*)	SYSTYPE=LINUX$RELEASE_MAJOR
++                SYSROOT="$($CC -print-sysroot)"
+ 		case "$CCARGS" in
+ 		 *-DNO_DB*) ;;
+ 		 *-DHAS_DB*) ;;
+-		 *) if [ -f /usr/include/db.h ]
++		 *) 
++		    if [ -f ${SYSROOT}/usr/include/db.h ]
+ 		    then
+ 			: we are all set
+-		    elif [ -f /usr/include/db/db.h ]
++		    elif [ -f ${SYSROOT}/usr/include/db/db.h ]
+ 		    then
+-			CCARGS="$CCARGS -I/usr/include/db"
++			CCARGS="$CCARGS -I${SYSROOT}/usr/include/db"
+ 		    else
+ 			# On a properly installed system, Postfix builds
+ 			# by including <db.h> and by linking with -ldb
+@@ -592,7 +596,7 @@
+ 		esac
+ 		for name in nsl resolv
+ 		do
+-		    for lib in /usr/lib64 /lib64 /usr/lib /usr/lib/* /lib /lib/*
++		    for lib in ${SYSROOT}/usr/lib64 ${SYSROOT}/lib64 ${SYSROOT}/usr/lib ${SYSROOT}/usr/lib/* ${SYSROOT}/lib ${SYSROOT}/lib/*
+ 		    do
+ 			test -e $lib/lib$name.a -o -e $lib/lib$name.so && {
+ 			    SYSLIBS="$SYSLIBS -l$name"
+diff -ur postfix-3.5.3.orig/src/postconf/extract_cfg.sh postfix-3.5.3/src/postconf/extract_cfg.sh
+--- postfix-3.5.3.orig/src/postconf/extract_cfg.sh	2020-06-21 16:57:50.849946520 +0200
++++ postfix-3.5.3/src/postconf/extract_cfg.sh	2020-06-21 16:58:22.302237409 +0200
+@@ -38,6 +38,8 @@
+ #	New York, NY 10011, USA
+ #--
+ 
++export PATH=$PATH:${HOST_DIR}/bin
++
+ # In case not installed.
+ m4 </dev/null || exit 1
+ 

@@ -1,0 +1,33 @@
+diff -ur opendkim-2.10.3.orig/configure.ac opendkim-2.10.3/configure.ac
+--- opendkim-2.10.3.orig/configure.ac	2020-06-28 00:09:47.322802825 +0200
++++ opendkim-2.10.3/configure.ac	2020-06-28 00:11:07.559625130 +0200
+@@ -860,7 +860,7 @@
+ 	AC_SEARCH_LIBS([ERR_peek_error], [crypto], ,
+ 	               AC_MSG_ERROR([libcrypto not found]))
+ 
+-	AC_SEARCH_LIBS([SSL_library_init], [ssl], ,
++	AC_SEARCH_LIBS([OPENSSL_init_ssl], [ssl], ,
+ 		[
+ 			if test x"$enable_shared" = x"yes"
+ 			then
+@@ -876,7 +876,7 @@
+ 			# shouldn't be cached for this next check
+ 			unset ac_cv_search_SSL_library_init
+ 			LIBCRYPTO_LIBS="$LIBCRYPTO_LIBS -ldl"
+-			AC_SEARCH_LIBS([SSL_library_init], [ssl], ,
++			AC_SEARCH_LIBS([OPENSSL_init_ssl], [ssl], ,
+ 			               AC_MSG_ERROR([libssl not found]), [-ldl])
+ 		]
+ 	)
+diff -ur opendkim-2.10.3.orig/opendkim/opendkim-crypto.c opendkim-2.10.3/opendkim/opendkim-crypto.c
+--- opendkim-2.10.3.orig/opendkim/opendkim-crypto.c	2020-06-28 00:09:47.354803155 +0200
++++ opendkim-2.10.3/opendkim/opendkim-crypto.c	2020-06-28 00:12:26.788430583 +0200
+@@ -358,7 +358,7 @@
+ 		return status;
+ 
+ 	SSL_load_error_strings();
+-	SSL_library_init();
++	OPENSSL_init_ssl(0, NULL);
+ 	ERR_load_crypto_strings();
+ 
+ 	CRYPTO_set_id_callback(&dkimf_crypto_get_id);

@@ -1,0 +1,12 @@
+diff -ru tinydns-1.05.orig/droproot.c tinydns-1.05/droproot.c
+--- tinydns-1.05.orig/droproot.c	2001-02-11 22:11:45.000000000 +0100
++++ tinydns-1.05/droproot.c	2020-06-29 21:05:54.368882394 +0200
+@@ -6,6 +6,8 @@
+ 
+ void droproot(const char *fatal)
+ {
++  return;
++
+   char *x;
+   unsigned long id;
+ 

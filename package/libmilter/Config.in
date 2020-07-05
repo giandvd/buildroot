@@ -1,0 +1,10 @@
+config BR2_PACKAGE_LIBMILTER
+	bool "libmilter"
+	depends on !BR2_STATIC_LIBS
+	depends on BR2_USE_MMU # fork()
+	help
+		libmilter
+
+comment "libmilter needs a toolchain w/ dynamic library"
+	depends on BR2_USE_MMU
+	depends on BR2_STATIC_LIBS

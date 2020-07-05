@@ -1,0 +1,18 @@
+config BR2_PACKAGE_PERL_NET_ACME2
+	bool "perl-net-acme2"
+	depends on !BR2_STATIC_LIBS
+	select BR2_PACKAGE_PERL_CALL_CONTEXT
+	select BR2_PACKAGE_PERL_CRYPT_FORMAT
+	select BR2_PACKAGE_PERL_CRYPT_PERL
+	select BR2_PACKAGE_PERL_HTTP_TINY_UA
+	select BR2_PACKAGE_PERL_IO_SOCKET_SSL
+	select BR2_PACKAGE_PERL_JSON
+	select BR2_PACKAGE_PERL_MODULE_RUNTIME
+	select BR2_PACKAGE_PERL_X_TINY
+	help
+	  Net::ACME2::LetsEncrypt - Let's Encrypt's v2 API endpoint
+
+	  https://metacpan.org/pod/Net::ACME2::LetsEncrypt
+
+comment "perl-net-acme2 needs a toolchain w/ dynamic library"
+	depends on BR2_STATIC_LIBS
